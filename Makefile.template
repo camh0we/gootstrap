@@ -1,0 +1,25 @@
+mod-init:
+	go mod init github.com/camh0we/<PACKAGE_NAME>
+
+mod-tidy:
+	go mod tidy
+	
+build:
+	go build -o bin/<PACKAGE_NAME> github.com/camh0we/<PACKAGE_NAME>/cmd/<PACKAGE_NAME>
+
+install:
+	go install -i github.com/camh0we/<PACKAGE_NAME>/cmd/<PACKAGE_NAME>
+
+run-only:
+	bin/<PACKAGE_NAME>
+
+run: build run-only
+
+test:
+	go test github.com/camh0we/<PACKAGE_NAME>/...
+
+testv:
+	go test -v github.com/camh0we/<PACKAGE_NAME>/...
+
+testc:
+	go test -race -coverprofile=coverage.txt -covermode=atomic github.com/camh0we/<PACKAGE_NAME>/...
